@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<body>
+  <form action="" method="POST">
+    <div class = "form-group">
+      <label for="first_name">First Name:</label>
+      <input type = "text" id="first_name" name="first_name">
+    </div>
+    <div class = "form-group">
+      <label for = "last_name">Last Name</label>
+      <input type = "text" id="last_name" name="last_name">
+    </div>
+    <div class = "form-group">
+      <label for = "gender">Gender:</label>
+      <select id="gender" name ="gender">
+        <option value = "female">Female</option>
+        <option value = "male">Male</option>
+        <option value = "non-binary">Non-Binary</option>
+        <option value = "other">Other (Please Specify)</option>
+      </select>
+    </div>
+    <div id = "other-input-group" class="form-group hidden-field">
+      <label for="other-details">Please Specify:</label>
+      <input type="text" id="other-details" name="other_details_text">
+    </div>
+    <!-- AI was used for this part, I wanted to be fancy-->
+     <style>
+      .hidden-field { display: none; }
+    </style>
+    <script>
+      const genderDropdown = document.getElementById('gender');
+      const otherContainer = document.getElementById('other-input-group');
+      const otherInput = document.getElementById('other-details');
+
+      genderDropdown.addEventListener('change', function () {
+        const isOther = this.value === 'other';
+        otherContainer.style.display = isOther ? 'block' : 'none';
+        otherInput.required = isOther;
+        if (!isOther) otherInput.value = '';
+      });
+    </script>
+    <!-- No AI from this point on -->
+    <div class="form-group">
+      <label for = "date_of_birth">Date of Birth:</label>
+      <input type = "date" id="date_of_birth" name="date_of_birth">
+    </div>
+    <div class="form-group">
+      <label for = "email">Email:</label>
+      <input type = "email" id="email" name="email">
+    </div>
+    <button type="Submit">Add Details</button>
+  </form>
+  <form action="" method="GET" role="search">
+    <div class="search-box">
+      <input type="search" id = "search_name" name ="search_name" placeholder = "Search for Name: ">
+      <button type="submit" label="Search">
+        Search
+      </button>
+    </div>
+  </form>
+</body>
